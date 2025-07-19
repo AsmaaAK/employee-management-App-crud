@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Employee Management CRUD App</title>
+</head>
+<body>
+    <div class="crud">
+        <div class="head">
+        <h2>EMP</h2>
+        <p>Employee Managemnt APP</p>
+         </div>
+        <div class="inputs">
+            <input placeholder="Employee Name" type="text" id="username" required>
+            <input type="text" id="role" placeholder="Role" required><br>
+            <select id="status" required><option value="">Select Status</option>
+            <option value="Active">Active</option>
+            <option value="On Leave">On Leave</option>
+            <option value="Terminated">Terminated</option>
+            </select>
+            <button id="submit">create</button>
+        </div>
+        <div class="output">
+            <div class="searchBlock">
+                <input onkeyup="searchData(this.value)" type="text" id="search" placeholder="search">
+                <div class="btnsearch">
+                    <button onclick="getSearchMood(this.id)" id="searchName">Search by Name</button>
+                    <button onclick="getSearchMood(this.id)" id="searchRole">Search by Role</button>
+                </div>
+                <div id="deleteAll">
+
+                </div>
+                     <div class="grid-header grid">
+                        <div>id</div>
+                        <div>Employee Name</div>
+                        <div>Role</div>
+                        <div>Select Status</div>
+                        <div>update</div>
+                        <div>delete</div>
+
+                     </div>
+                    <div id="grid-body">
+                       
+                    </div>
+            </div>
+        </div>
+    </div>
+   <script src="main.js"></script>
+</body>
+</html> 
