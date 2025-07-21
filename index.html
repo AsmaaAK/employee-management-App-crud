@@ -1,53 +1,95 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Employee Management CRUD App</title>
 </head>
 <body>
-    <div class="crud">
-        <div class="head">
-        <h2>EMP</h2>
-        <p>Employee Managemnt APP</p>
-         </div>
-        <div class="inputs">
-            <input placeholder="Employee Name" type="text" id="username" required>
-            <input type="text" id="role" placeholder="Role" required><br>
-            <select id="status" required><option value="">Select Status</option>
-            <option value="Active">Active</option>
-            <option value="On Leave">On Leave</option>
-            <option value="Terminated">Terminated</option>
-            </select>
-            <button id="submit">create</button>
-        </div>
-        <div class="output">
-            <div class="searchBlock">
-                <input onkeyup="searchData(this.value)" type="text" id="search" placeholder="search">
-                <div class="btnsearch">
-                    <button onclick="getSearchMood(this.id)" id="searchName">Search by Name</button>
-                    <button onclick="getSearchMood(this.id)" id="searchRole">Search by Role</button>
-                </div>
-                <div id="deleteAll">
-
-                </div>
-                     <div class="grid-header grid">
-                        <div>id</div>
-                        <div>Employee Name</div>
-                        <div>Role</div>
-                        <div>Select Status</div>
-                        <div>update</div>
-                        <div>delete</div>
-
-                     </div>
-                    <div id="grid-body">
-                       
-                    </div>
-            </div>
-        </div>
+  <header>
+    <h1>Employee Management App</h1>
+  </header>
+  <section class="form-section">
+    <form id="my-form">
+      <input type="text" id="name" placeholder="Employee Name" required />
+      <input type="text" id="role" placeholder="Role" required />
+      <input type="text" id="salary" placeholder="Salary" required />
+      <select id="status" required>
+        <option value="">Select Status</option>
+        <option value="Active">Active</option>
+        <option value="On Leave">On Leave</option>
+        <option value="Terminated">Terminated</option>
+      </select>
+      <button type="submit">Add Employee</button>
+      <p id="form-error" class="error-message"></p>
+    </form>
+  </section>
+  <section class="filters">
+    <input type="text" id="search-name" placeholder="Search by Name" />
+    <input type="text" id="filter-role" placeholder="Filter by Role" />
+    <input type="number" id="filter-min-salary" placeholder="Min Salary" />
+    <input type="number" id="filter-max-salary" placeholder="Max Salary" />
+    <input type="number" id="filter-min-bonus" placeholder="Min Bonus %" />
+    <input type="number" id="filter-max-bonus" placeholder="Max Bonus %" />
+    <select id="filter-status">
+      <option value="">All Status</option>
+      <option value="Active">Active</option>
+      <option value="On Leave">On Leave</option>
+      <option value="Terminated">Terminated</option>
+    </select>
+    <button id="apply-filters">Apply Filters</button>
+    <button id="clear-filters">Clear Filters</button>
+  </section>
+  <section class="main-table">
+    <table >
+      <thead>
+        <tr class="grid-header grid">
+          <th>#</th>
+          <th>Name</th>
+          <th>Role</th>
+          <th>Status</th>
+          <th>Salary</th>
+          <th>Bonus %</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </section>
+  <section class="trash-section">
+    <button id="toggle-trash">Show Trash</button>
+    <div id="trash-container" class="hidden">
+      <h2>Trash <span id="trash-count">(0)</span></h2>
+      <table id="trash-table">
+        <thead>
+          <tr class="trash-th">
+            <th>Name</th>
+            <th>Role</th>
+            <th>Status</th>
+            <th>Salary</th>
+            <th>Bonus</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
     </div>
-   <script src="main.js"></script>
+  </section>
+
+  <section class="payroll">
+    <h2>Total Payroll: <span id="total-payroll">0 R</span></h2>
+    <button id="delete-low-salary">Delete Salary ≤ 20000 R</button>
+  </section>
+
+  <!-- Modal -->
+  <div id="bonus-modal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h3>Add Bonus Percentage</h3>
+      <input type="number" id="bonus-percentage" placeholder="Enter bonus %" />
+      <button id="save-bonus">Save</button>
+    </div>
+  </div>
+  <script src="main.js"></script>
 </body>
-</html> 
+</html>
